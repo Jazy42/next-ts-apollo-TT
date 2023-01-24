@@ -5,6 +5,7 @@ import GlobalStyle from "../components/globalstyles";
 import { RecoilRoot } from "recoil";
 import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "../lib/apollo-client";
+import Guard from "../components/guard/Guard";
 const theme: DefaultTheme = {
   colors: {
     primary: "#111",
@@ -18,12 +19,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ApolloProvider client={apolloClient}>
-        <RecoilRoot>
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </RecoilRoot>
+        <Guard excludedRoutes="/">
+          <RecoilRoot>
+            <ThemeProvider theme={theme}>
+              <GlobalStyle />
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </RecoilRoot>
+        </Guard>
       </ApolloProvider>
     </>
   );

@@ -24,6 +24,6 @@ export const GET_CALLS = gql`
 
 
 export const allCallsVariables = {
-  offset: 20.0,
-      limit: 100.0,
+  offset: 40.0,
+  limit: 200.0,
 }

@@ -1,5 +1,4 @@
 import { useReactiveVar } from "@apollo/client";
-import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { authenticatedVar } from "../../constants/helper";
@@ -19,7 +18,7 @@ const Guard = ({ children, excludedRoutes }: GuardProps) => {
 
   useEffect(() => {
     if (!authenticated && !excludedRoutes?.includes(router.pathname)) {
-      router.push("/login");
+      router.push("/");
     }
   }, [authenticated, router, excludedRoutes]);
   return (

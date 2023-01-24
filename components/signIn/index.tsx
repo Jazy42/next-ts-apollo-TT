@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { CREATEUSER, IMLoginUser } from "./types";
 import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { authenticatedVar } from "../../constants/helper";
+import Cookies from "js-cookie";
 
 const SignIn: React.FC = () => {
   const router = useRouter();
@@ -41,7 +42,7 @@ const SignIn: React.FC = () => {
   );
   if (data?.login.access_token) {
     router.push("/callList");
-    setCookie("access_token", data.login.access_token);
+    Cookies.set("access_token", data.login.access_token);
   }
 
   if (error) {

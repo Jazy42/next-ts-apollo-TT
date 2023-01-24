@@ -1,24 +1,28 @@
 import CallList from "../components/callList";
-import cookies from "next-cookies";
 import { addApolloState, initializeApollo } from "../lib/apollo-client";
 import { allCallsVariables, GET_CALLS } from "../components/callList/queries";
 
 export default function Calls(props) {
-  //@ts-ignore
-  return <CallList callsData={props.calls} />;
+  return <CallList callsData={props.callsData} />;
 }
 
-export async function getServerSideProps() {
-  const apolloClient = initializeApollo();
+const apolloClient = initializeApollo();
+
+export async function getServerSideProps(ctx) {
+  const { req, res } = ctx;
+  const accessToken = req.cookies["access_token"];
 
   const { data } = await apolloClient.query({
     query: GET_CALLS,
-    varibales: allCallsVariables,
+    variables: allCallsVariables,
+    context: {
+      accessToken,
+    },
   });
 
   return addApolloState(apolloClient, {
     props: {
-      calls: data,
+      callsData: data,
     },
   });
 }

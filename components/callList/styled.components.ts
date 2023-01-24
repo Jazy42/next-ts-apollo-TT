@@ -114,6 +114,8 @@ export const LogOutButton = styled(Button)`
   width: 108px;
   height: 40px;
   border-radius: 3px;
+  background: #325AE7;
+    color: #fff;
 `;
 
 export const DirectionText = styled.h3<{ value: string }>`

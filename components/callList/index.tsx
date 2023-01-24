@@ -30,10 +30,11 @@ import { noteText } from "./atoms";
 import { POST_NOTES } from "./mutations";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { IALLCALLS, ICALLS, IQCALLS } from "./types";
+import Cookies from "js-cookie";
+import { initializeApollo } from "../../lib/apollo-client";
 
 const CallList = (props) => {
-  console.debug(props?.callData);
+  const client = initializeApollo();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [dataObject, setDataObject] = useState<any>({});
   const [status, setStatus] = useState<String>("All");
@@ -45,27 +46,26 @@ const CallList = (props) => {
   };
 
   const handleClick = () => {
-    localStorage.removeItem("item");
+    Cookies.remove("access_token");
     router.push("/");
   };
-
-  const [postNote] = useMutation(POST_NOTES);
-
-  // React.useEffect(() => {
-  //   if (error) message.error(error.message);
-  // }, [error, loading]);
 
   const handleChange = ({ value }: any) => {
     setStatus(value);
   };
 
-  const handleOk = () => {
+  const handleOk = async () => {
+    const accessToken = await Cookies.get("access_token");
     setIsModalOpen(false);
-    postNote({
+    await client.mutate({
+      mutation: POST_NOTES,
       variables: {
         input: {
           activityId: dataObject.id,
           content: note_Text,
+        },
+        context: {
+          accessToken,
         },
       },
     });
@@ -182,7 +182,7 @@ const CallList = (props) => {
       },
     },
   ];
-  const filterArchieveData = props?.callData?.paginatedCalls?.nodes.filter(
+  const filterArchieveData = props?.callsData?.paginatedCalls?.nodes.filter(
     (d: any) => {
       if (d.is_archived) {
         return d;
@@ -190,7 +190,7 @@ const CallList = (props) => {
     }
   );
 
-  const filterUnArchiveData = props?.callData?.paginatedCalls?.nodes.filter(
+  const filterUnArchiveData = props?.callsData?.paginatedCalls?.nodes.filter(
     (d: any) => {
       if (!d.is_archived) {
         return d;
@@ -236,11 +236,11 @@ const CallList = (props) => {
         </FilterContainer>
       </div>
       <TableContainer>
-        {props?.callData ? (
+        {props?.callsData ? (
           <Table
             dataSource={
               status === "All"
-                ? props?.callData?.paginatedCalls?.nodes
+                ? props?.callsData?.paginatedCalls?.nodes
                 : status === "Archived"
                 ? filterArchieveData
                 : filterUnArchiveData

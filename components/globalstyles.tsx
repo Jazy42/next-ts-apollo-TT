@@ -1,6 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+
   html,
   body {
     color: ${({ theme }) => theme.colors.primary};
@@ -18,6 +19,28 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-`
+  @font-face {
+    font-family: 'Avenir, Medium';
+    src: url('/fonts/AvenirLTSd-Black.otf') format('otf');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Avenir, Book';
+    src: url('/fonts/AvenirLTSd-Book.otf') format('otf');
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Avenir, Heavy';
+    src: url('/fonts/AvenirLTSd-Roman.otf') format('otf');
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap;
+  }
 
-export default GlobalStyle
+`;
+
+export default GlobalStyle;
