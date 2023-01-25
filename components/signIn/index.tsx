@@ -7,9 +7,6 @@ import Image from "next/image";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "./mutations";
 import { useRouter } from "next/router";
-import { CREATEUSER, IMLoginUser } from "./types";
-import { getCookie, hasCookie, setCookie } from "cookies-next";
-import { authenticatedVar } from "../../constants/helper";
 import Cookies from "js-cookie";
 
 const SignIn: React.FC = () => {
@@ -54,7 +51,7 @@ const SignIn: React.FC = () => {
   return (
     <>
       <LogoContainer>
-        <Image src={TuringTechLogo} alt="img" />
+        <Image src={TuringTechLogo} alt="img" width={200} height={25} />
       </LogoContainer>
       <MainContainer>
         <Form

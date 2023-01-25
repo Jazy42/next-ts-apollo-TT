@@ -20,9 +20,6 @@ import {
 import turingTechLogo from "../../assets/images/logo.png";
 import { Table, Button } from "antd";
 import { Select } from "antd";
-import { useMutation, useQuery } from "@apollo/client";
-import { GET_CALLS } from "./queries";
-import message from "antd";
 import moment from "moment";
 import AddNotesModal from "./addNotesModal";
 import { useRecoilValue } from "recoil";
@@ -203,7 +200,7 @@ const CallList = (props) => {
     <MainContainer>
       <HeaderContainer>
         <LogoContainer>
-          <Image src={turingTechLogo} alt="logo" />{" "}
+          <Image src={turingTechLogo} alt="logo" width={250} height={30} />
         </LogoContainer>
         <LogOutButton onClick={handleClick}>Logout</LogOutButton>
       </HeaderContainer>

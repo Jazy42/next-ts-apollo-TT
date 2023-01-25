@@ -23,38 +23,4 @@ export default class MyDocument extends Document {
       sheet.seal();
     }
   }
-
-  render() {
-    return (
-      <Html lang="en">
-        <Head>
-          <link
-            rel="preload"
-            href="/fonts/AvenirLTStd-Black.otf"
-            as="font"
-            type="font/woff"
-            crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="/fonts/AvenirLTStd-Book.otf"
-            as="font"
-            type="font/woff"
-            crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="/fonts/AvenirLTStd-Roman.otf"
-            as="font"
-            type="font/woff"
-            crossOrigin=""
-          />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
 }

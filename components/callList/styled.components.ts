@@ -21,7 +21,6 @@ export const HeaderContainer = styled.div`
 export const Heading = styled.h1`
   font-size: 28px;
   color: #232323;
-  font-family: Avenir, Medium;
   padding-left: 60px;
 `;
 
@@ -81,12 +80,11 @@ export const Title = styled.h4`
   color: #232323;
   font-size: 14px;
   line-height: 19px;
-  font-family: Avenir, Book;
 `;
 
 export const TableContainer = styled.div`
   padding: 60px;
-  .ant-pagination.ant-table-pagination.ant-table-pagination-right.css-dev-only-do-not-override-26rdvq {
+  .ant-pagination.ant-table-pagination.ant-table-pagination-right.css-dev-only-do-not-override-sk7ap8 {
     justify-content: center;
   }
   .ant-table-content .ant-table-thead {
@@ -129,13 +127,11 @@ export const DirectionText = styled.h3<{ value: string }>`
       : "#325AE7"};
 
   font-size: 12px;
-  font-family: Avenir, Medium;
 `;
 
 export const Text = styled.h3`
   font-size: 14px;
   color: #232323;
-  font-family: Avenir, Medium;
   font-weight: 400;
 `;
 
@@ -155,19 +151,16 @@ export const Item = styled.div`
 export const Name = styled.div`
   color: #232323;
   font-size: 14px;
-  font-family: Avenir, Heavy;
   font-weight: 700;
 `;
 export const Value = styled.div`
   color: #232323;
   font-size: 14px;
-  font-family: Avenir, Heavy;
 `;
 
 export const CallType = styled.div`
   color: #325ae7;
   font-size: 14px;
-  font-family: Avenir, Medium;
 `;
 
 export const NotesContainer = styled.div`
